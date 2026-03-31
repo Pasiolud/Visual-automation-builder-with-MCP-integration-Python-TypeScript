@@ -2,12 +2,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.models import GraphPayload
 from backend.app.engine import GraphEngine
+from backend.app.models import ChatMessage
 import sys
 import asyncio
+from backend.app.services.agent import Agent
 
 # FastAPI usunie problem z blokowaniem jeśli odpalimy graf w osobnym wątku
 
 app = FastAPI()
+agent = Agent()
 
 app.add_middleware(
     CORSMiddleware,
@@ -35,3 +38,8 @@ def graph_load(payload: GraphPayload): # notka: windows bazowo odpala na Selecto
     loop.close()
 
     return {"message": "graph loaded successfully"}
+
+@app.post("/ai/chat")
+async def ai_chat(payload: ChatMessage):
+    response = await agent.ask(payload.message)
+    return {"response":response}

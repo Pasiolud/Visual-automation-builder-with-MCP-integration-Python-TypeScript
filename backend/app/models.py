@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Dict, Any, Optional, List
 from pydantic import Field
+from datetime import time
 
 
 class GraphEdge(BaseModel):
@@ -20,3 +21,6 @@ class GraphNode(BaseModel):
 class GraphPayload(BaseModel):
     nodes: List[GraphNode]
     edges: List[GraphEdge]
+    
+class ChatMessage(BaseModel):
+    message: str

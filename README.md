@@ -21,3 +21,16 @@ Here's another one:
 <img width="1212" height="565" alt="openYtandSearchCrazyFrog" src="https://github.com/user-attachments/assets/df7f2f40-1a20-4ced-8133-7ba7d07dcbae" />
 
 This flow goes to YouTube, writes "crazy frog" for us, and then clicks the search button.
+
+15.04.2026:
+finally the llm can use tools although for now not all of them are implemented, but it should be starighforward now since the system works.
+ async def test():
+        agent = Agent()
+        try:
+            answer = await agent.ask("Wejdz na youtube.com ")
+            print(f"Odpowiedz: {answer}")
+        except Exception as e:
+            print(f"Error: {e}")
+
+I struggled with this "Error: Function open_page is a coroutine function, which is not supported for automatic function calling. Please manually invoke open_page to get the function response."
+for like few hours but it turns out the gemini can not use async function(which makes sense) so i needed to write tool loop myself

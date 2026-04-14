@@ -7,6 +7,8 @@ browser = BrowserService()
 
 
 # na przyszlosc te docstringi """""" to widzi agent takie opisy dzialania funkcji
+
+#EMMMMM
 @mcp.tool()
 async def open_page(url: str) -> str:
     """Otwiera stronę w przeglądarce z podanego url"""
@@ -22,6 +24,7 @@ async def get_page_elements() -> str:
 
 @mcp.tool()
 async def click_element(selector: str, text: str) -> str:
+    """Klika w element o danym selektorze CSS"""
     return await browser.click_element(selector)
 
 

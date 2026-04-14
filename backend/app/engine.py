@@ -29,9 +29,9 @@ class GraphEngine:
             self.adjacency_map[edge.source_id].append(
                 (edge.target_id, edge.source_handle)
             )  # na przyszlosc jakbys sie zastanawial po co ten edge.source_handle. To generalnie jakbyś miał więcej niż jeden wyjść z danego węzła to byś mógł rozróżniać które wyjście jest które
-            ### Wyjasnienie - nie moje AI
-            # Teraz oba kable wychodzą z tego samego klocka (Pętla)! Gdyby nie source_handle, silnik by zgłupiał: "Stoję na Pętli, widzę dwa kable, oba prowadzą dalej... którym mam iść?!".
-            # Wtedy wkracza source_handle:
+            ###
+            # Teraz oba kable wychodzą z tego samego klocka (Pętla)! Gdyby nie source_handle, silnik by zgłupiał: "Stoję na Pętli, widzę dwa kable, oba prowadzą dalej którym mam iść?".
+            # Wtedy source_handle:
             # Kabel A ma source_handle="next_item".
             # Kabel B ma source_handle="completed".
             # Silnik sprawdza swój licznik pętli i mówi: "Jeszcze mam elementy, więc szukam kabla, który w source_handle ma napisane next_item".

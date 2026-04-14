@@ -7,8 +7,6 @@ import sys
 import asyncio
 from backend.app.services.agent import Agent
 
-# FastAPI usunie problem z blokowaniem jeśli odpalimy graf w osobnym wątku
-
 app = FastAPI()
 agent = Agent()
 
@@ -33,7 +31,6 @@ def graph_load(payload: GraphPayload): # notka: windows bazowo odpala na Selecto
     engine = GraphEngine(payload)
     engine.build_map()
     
-    # Uruchamiamy graf w nowej pętli
     loop.run_until_complete(engine.run())
     loop.close()
 

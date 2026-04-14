@@ -16,13 +16,14 @@ class BrowserService:
             await self.init_browser()
         self.page = await self.browser.new_page()
         await self.page.goto(url)
+        return f"Strona {url} została otwarta"
 
     async def inspect_page(self) -> dict:
         title = await self.page.title()
         url = self.page.url
         # wyciagam z dom elementy interaktywne -> na tablice -> serializuje na json
         # W PRZYSZLOSCI MOZNA DODAC WIECEJ NA RAZIE TYLE MI PRZYCHODZI DO GLOWY
-        js = """
+        js = r"""
         ()=>{
         let all_elements = document.querySelectorAll("button, [type='submit'], input, a")
         

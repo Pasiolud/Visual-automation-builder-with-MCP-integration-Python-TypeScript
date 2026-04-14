@@ -24,6 +24,7 @@ import { ExportCsvNode } from './nodes/ExportCsvNode';
 import { ExtractMultipleNode } from './nodes/ExtractMultipleNode';
 import { LoopNode } from './nodes/LoopNode';
 import { LogModal } from './components/LogModal';
+import { ChatPanel } from './components/ChatPanel';
 
 const nodeTypes = {
   startNode: StartNode,
@@ -49,6 +50,8 @@ function Board() {
 
   const [isLogModalOpen, setIsLogModalOpen] = useState(false);
   const [executionLogs, setExecutionLogs] = useState("");
+
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
 
   useEffect(() => {
@@ -172,6 +175,11 @@ function Board() {
         logs={executionLogs}
       />
 
+      <ChatPanel
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+      />
+
       <div className="absolute top-6 right-6 z-10 flex flex-col gap-2">
         <button
           onClick={() => setIsLogModalOpen(true)}
@@ -183,7 +191,7 @@ function Board() {
           onClick={saveBoard}
           className="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium py-2 px-4 border border-slate-700 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all"
         >
-          <Save size={16} /> Save Board
+          <Save size={16} /> Save Board(PLACEHOLDER)
           {/*w przyszlosci dodac zapis osobnych automatyzacji*/}
         </button>
         <button
